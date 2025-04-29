@@ -40,7 +40,7 @@ class NaiveRewardManager:
         self.compute_score = compute_score or default_compute_score
         self.reward_fn_key = reward_fn_key  # Store the key for accessing the data source
 
-    def __call__(self, data: DataProto, return_dict=False):
+    def __call__(self, data: DataProto, step: int, return_dict: bool = False):
         """We will expand this function gradually based on the available datasets"""
 
         # If there is rm score, we directly return rm score. Otherwise, we compute via rm_score_fn
@@ -51,6 +51,10 @@ class NaiveRewardManager:
                 return data.batch["rm_scores"]
 
         reward_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
+        format_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
+        correctness_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
+        length_tensor = torch.zeros_like(data.batch["responses"], dtype=torch.float32)
+
         reward_extra_info = defaultdict(list)
 
         already_print_data_sources = {}
@@ -81,18 +85,29 @@ class NaiveRewardManager:
                 data_source=data_source,
                 solution_str=response_str,
                 ground_truth=ground_truth,
+                step=step,
+                tokenizer=self.tokenizer,
                 extra_info=extra_info,
             )
 
             if isinstance(score, dict):
                 reward = score["score"]
+                format_score = score.get("format_score", 0)
+                correctness_score = score.get("correctness_score", 0)
+                length_score = score.get("length_score", 0)
                 # Store the information including original reward
                 for key, value in score.items():
                     reward_extra_info[key].append(value)
             else:
                 reward = score
+                format_score = 0
+                correctness_score = 0
+                length_score = 0
 
             reward_tensor[i, valid_response_length - 1] = reward
+            format_tensor[i, valid_response_length - 1] = format_score
+            correctness_tensor[i, valid_response_length - 1] = correctness_score
+            length_tensor[i, valid_response_length - 1] = length_score
 
             if data_source not in already_print_data_sources:
                 already_print_data_sources[data_source] = 0
@@ -111,6 +126,9 @@ class NaiveRewardManager:
         if return_dict:
             return {
                 "reward_tensor": reward_tensor,
+                "format_tensor": format_tensor,
+                "correctness_tensor": correctness_tensor,
+                "length_tensor": length_tensor,
                 "reward_extra_info": reward_extra_info,
             }
         else:

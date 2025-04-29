@@ -16,7 +16,7 @@
 from verl.utils.import_utils import deprecated
 
 
-def default_compute_score(data_source, solution_str, ground_truth, extra_info=None, sandbox_fusion_url=None, concurrent_semaphore=None, memory_limit_mb=None):
+def default_compute_score(data_source, solution_str, ground_truth, step=0, tokenizer=None, extra_info=None, sandbox_fusion_url=None, concurrent_semaphore=None, memory_limit_mb=None):
     """Compute the score for a given solution based on the data source.
 
     Args:
@@ -83,7 +83,18 @@ def default_compute_score(data_source, solution_str, ground_truth, extra_info=No
         from . import search_r1_like_qa_em
 
         res = search_r1_like_qa_em.compute_score(solution_str, ground_truth)
+    elif "multiply" in data_source or "arithmetic" in data_source:
+        from . import multiply
 
+        res = multiply.compute_score(solution_str, ground_truth)
+    elif "countdown" in data_source:
+        from . import countdown
+
+        res = countdown.compute_score(solution_str, ground_truth)
+    elif "rlla" in data_source:
+        from . import rlla
+
+        res = rlla.compute_score(solution_str, ground_truth, extra_info, tokenizer, step)
     else:
         raise NotImplementedError(f"Reward function is not implemented for {data_source=}")
 

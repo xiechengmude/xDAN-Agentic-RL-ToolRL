@@ -13,7 +13,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-dataset/*
+# dataset/*
 tensorflow/my_graph/*
 .idea/
 # C extensions
@@ -116,7 +116,7 @@ ENV/
 *.lock
 
 # data
-*.parquet
+# *.parquet
 
 
 # local logs

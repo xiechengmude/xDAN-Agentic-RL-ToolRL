@@ -102,6 +102,10 @@ def compute_data_metrics(batch: DataProto, use_critic: bool = True) -> Dict[str,
     """
     sequence_score = batch.batch["token_level_scores"].sum(-1)
     sequence_reward = batch.batch["token_level_rewards"].sum(-1)
+    
+    sequence_score_format = batch.batch["token_level_scores_format"].sum(-1)
+    sequence_score_correctness = batch.batch["token_level_scores_correctness"].sum(-1)
+    sequence_score_length = batch.batch["token_level_scores_length"].sum(-1)
 
     advantages = batch.batch["advantages"]
     returns = batch.batch["returns"]
@@ -131,6 +135,27 @@ def compute_data_metrics(batch: DataProto, use_critic: bool = True) -> Dict[str,
         "critic/score/mean": torch.mean(sequence_score).detach().item(),
         "critic/score/max": torch.max(sequence_score).detach().item(),
         "critic/score/min": torch.min(sequence_score).detach().item(),
+        # format score
+        "critic/format_score/mean":
+            torch.mean(sequence_score_format).detach().item(),
+        "critic/format_score/max":
+            torch.max(sequence_score_format).detach().item(),
+        "critic/format_score/min":
+            torch.min(sequence_score_format).detach().item(),
+        # correctness score
+        "critic/correctness_score/mean":
+            torch.mean(sequence_score_correctness).detach().item(),
+        "critic/correctness_score/max":
+            torch.max(sequence_score_correctness).detach().item(),
+        "critic/correctness_score/min":
+            torch.min(sequence_score_correctness).detach().item(),
+        # length score
+        "critic/length_score/mean":
+            torch.mean(sequence_score_length).detach().item(),
+        "critic/length_score/max":
+            torch.max(sequence_score_length).detach().item(),
+        "critic/length_score/min":
+            torch.min(sequence_score_length).detach().item(),
         # reward
         "critic/rewards/mean": torch.mean(sequence_reward).detach().item(),
         "critic/rewards/max": torch.max(sequence_reward).detach().item(),
