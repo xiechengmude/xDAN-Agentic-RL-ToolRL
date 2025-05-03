@@ -1,6 +1,4 @@
 # Copyright 2024 Bytedance Ltd. and/or its affiliates
-# Copyright 2023-2024 SGLang Team
-# Copyright 2025 ModelBest Inc. and/or its affiliates
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,8 +19,8 @@ import re
 from collections import defaultdict
 from typing import List, Optional, Union
 
-import datasets
 import numpy as np
+import pandas as pd
 import torch
 from omegaconf import DictConfig, ListConfig
 from torch.utils.data import Dataset
@@ -106,9 +104,20 @@ class RLHFDataset(Dataset):
         dataframes = []
         for parquet_file in self.data_files:
             # read parquet files and cache
-            dataframe = datasets.load_dataset("parquet", data_files=parquet_file)["train"]
+            try:
+                dataframe = pd.read_parquet(parquet_file)
+            except Exception as e:
+                print(f"Error reading parquet file {parquet_file}: {str(e)}")
+                # Try loading json version instead
+                json_file = parquet_file.replace(".parquet", ".json")
+                try:
+                    dataframe = pd.read_json(json_file, orient="records")
+                    print(f"Successfully loaded JSON version from {json_file}")
+                except Exception as json_e:
+                    print(f"Also failed to read JSON file {json_file}: {str(json_e)}")
+                    raise e from json_e
             dataframes.append(dataframe)
-        self.dataframe: datasets.Dataset = datasets.concatenate_datasets(dataframes)
+        self.dataframe = pd.concat(dataframes)
 
         print(f"dataset len: {len(self.dataframe)}")
 
@@ -116,11 +125,7 @@ class RLHFDataset(Dataset):
         if self.filter_overlong_prompts:
             tokenizer = self.tokenizer
             prompt_key = self.prompt_key
-            self.dataframe = self.dataframe.filter(
-                lambda doc: len(tokenizer.apply_chat_template(doc[prompt_key], add_generation_prompt=True)) <= self.max_prompt_length,
-                num_proc=self.num_workers,
-                desc=f"Filtering prompts longer than {self.max_prompt_length} tokens",
-            )
+            self.dataframe = self.dataframe[self.dataframe.apply(lambda doc: len(tokenizer.apply_chat_template(doc[prompt_key], add_generation_prompt=True)) <= self.max_prompt_length, axis=1)]
 
             print(f"filter dataset len: {len(self.dataframe)}")
 
@@ -159,7 +164,7 @@ class RLHFDataset(Dataset):
         """
         Note that we also return the raw_input_ids so that it can be combined with other chat template
         """
-        row_dict: dict = self.dataframe[item]
+        row_dict = self.dataframe.iloc[item].to_dict()
         messages = self._build_messages(row_dict)
         model_inputs = {}
 

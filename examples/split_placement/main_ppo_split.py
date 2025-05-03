@@ -18,6 +18,7 @@ Note that we don't combine the main with ray_trainer as ray_trainer is used by o
 import hydra
 import ray
 import torch
+from rllm.rewards.rl_reward import rllm_reward_fn
 from split_monkey_patch import fit
 
 from verl import DataProto
@@ -31,7 +32,7 @@ def _select_rm_score_fn(data_source):
     elif data_source == "lighteval/MATH":
         return math.compute_score
     else:
-        raise NotImplementedError
+        return rllm_reward_fn
 
 
 class RewardManager:
@@ -50,8 +51,13 @@ class RewardManager:
 
         already_print_data_sources = {}
 
-        for i in range(len(data)):
-            data_item = data[i]  # DataProtoItem
+        from concurrent.futures import ThreadPoolExecutor
+        # import threading
+        # Thread-safe dict for tracking printed data sources
+        # print_lock = threading.Lock()
+
+        def process_item(args):
+            i, data_item, already_print_data_sources = args
 
             prompt_ids = data_item.batch["prompts"]
 
@@ -74,8 +80,7 @@ class RewardManager:
             data_source = data_item.non_tensor_batch["data_source"]
             compute_score_fn = _select_rm_score_fn(data_source)
 
-            score = compute_score_fn(solution_str=sequences_str, ground_truth=ground_truth)
-            reward_tensor[i, valid_response_length - 1] = score
+            score = compute_score_fn(data_source=data_source, llm_solution=sequences_str, ground_truth=ground_truth)
 
             if data_source not in already_print_data_sources:
                 already_print_data_sources[data_source] = 0
@@ -83,6 +88,24 @@ class RewardManager:
             if already_print_data_sources[data_source] < self.num_examine:
                 already_print_data_sources[data_source] += 1
                 print(sequences_str)
+
+            # with print_lock:
+            #     if data_source not in already_print_data_sources:
+            #         already_print_data_sources[data_source] = 0
+
+            #     if already_print_data_sources[data_source] < self.num_examine:
+            #         already_print_data_sources[data_source] += 1
+            #         print(sequences_str)
+            return i, score, valid_response_length
+
+        # Process items in parallel using ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=48) as executor:
+            args = [(i, data[i], already_print_data_sources) for i in range(len(data))]
+            results = list(executor.map(process_item, args))
+
+        # Fill reward tensor with results
+        for i, score, valid_response_length in results:
+            reward_tensor[i, valid_response_length - 1] = score
 
         if return_dict:
             return {"reward_tensor": reward_tensor}

@@ -63,7 +63,9 @@ def _default_compute_score(data_source, solution_str, ground_truth, extra_info=N
 
         res = geo3k.compute_score(solution_str, ground_truth)
     else:
-        raise NotImplementedError(f"Reward function is not implemented for {data_source=}")
+        from rllm.rewards.rl_reward import rllm_reward_fn
+
+        res = rllm_reward_fn(data_source, solution_str, ground_truth)
 
     if isinstance(res, dict):
         return res
