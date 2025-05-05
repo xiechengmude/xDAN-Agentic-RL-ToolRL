@@ -1,0 +1,221 @@
+{
+  "metrics": {
+    "总体准确率": 73.33333333333333,
+    "工具调用准确率": "N/A",
+    "JSON输出准确率": "N/A",
+    "直接响应准确率": "N/A",
+    "平均响应时间": 1.2906970977783203,
+    "测试用例总数": 15,
+    "成功用例数": 11
+  },
+  "results": [
+    {
+      "name": "简单工具调用测试 - 是否为回文",
+      "success": false,
+      "output": "缺少标签: <tool_call>",
+      "time_taken": 0.6584608554840088
+    },
+    {
+      "name": "数学计算工具测试",
+      "success": false,
+      "output": "缺少标签: <tool_call>",
+      "time_taken": 0.9971132278442383
+    },
+    {
+      "name": "代理选择测试",
+      "success": true,
+      "output": {
+        "next": "browser"
+      },
+      "time_taken": 0.19412994384765625
+    },
+    {
+      "name": "搜索工具测试",
+      "success": false,
+      "output": "缺少标签: <tool_call>",
+      "time_taken": 0.6790308952331543
+    },
+    {
+      "name": "多工具调用测试",
+      "success": false,
+      "output": "缺少标签: <tool_call>",
+      "time_taken": 1.7747302055358887
+    },
+    {
+      "name": "数据集样本 #1",
+      "success": true,
+      "output": [
+        {
+          "name": "min_meeting_rooms",
+          "parameters": {
+            "intervals": [
+              [
+                9,
+                10
+              ],
+              [
+                9,
+                10.5
+              ],
+              [
+                10,
+                11
+              ]
+            ]
+          }
+        }
+      ],
+      "time_taken": 1.2932848930358887
+    },
+    {
+      "name": "数据集样本 #2",
+      "success": true,
+      "output": [
+        {
+          "name": "GetDocumentStrikeOutAnnotations",
+          "parameters": {
+            "name": "Report2020.pdf",
+            "storage": "ReportFiles"
+          }
+        }
+      ],
+      "time_taken": 1.1833770275115967
+    },
+    {
+      "name": "数据集样本 #3",
+      "success": true,
+      "output": "Your archer tower at location A1 has been successfully built and upgraded. It's ready to defend against the incoming waves!",
+      "time_taken": 1.3025016784667969
+    },
+    {
+      "name": "数据集样本 #4",
+      "success": true,
+      "output": [
+        {
+          "name": "all_strains_descending",
+          "parameters": {
+            "ordering": "thc"
+          }
+        },
+        {
+          "name": "order_by_ascending",
+          "parameters": {
+            "ordering": "popularity"
+          }
+        }
+      ],
+      "time_taken": 1.669443130493164
+    },
+    {
+      "name": "数据集样本 #5",
+      "success": true,
+      "output": [
+        {
+          "name": "pipeline.monitor",
+          "parameters": {
+            "pipeline_id": "DP-4321",
+            "monitoring_interval": "weekly",
+            "monitoring_start_date": "2023-04-01"
+          }
+        }
+      ],
+      "time_taken": 1.4348957538604736
+    },
+    {
+      "name": "数据集样本 #6",
+      "success": true,
+      "output": [
+        {
+          "name": "industry_list",
+          "parameters": {
+            "alias": "retail"
+          }
+        },
+        {
+          "name": "airplanes_by_brand",
+          "parameters": {
+            "brand": "Gulfstream"
+          }
+        }
+      ],
+      "time_taken": 1.6624410152435303
+    },
+    {
+      "name": "数据集样本 #7",
+      "success": true,
+      "output": [
+        {
+          "name": "least_common_multiple",
+          "parameters": {
+            "a": 15,
+            "b": 20
+          }
+        }
+      ],
+      "time_taken": 1.1428029537200928
+    },
+    {
+      "name": "数据集样本 #8",
+      "success": true,
+      "output": [
+        {
+          "name": "Verify Email",
+          "parameters": {
+            "email": "example@domain.com",
+            "checkSMTP": true
+          }
+        }
+      ],
+      "time_taken": 1.230320930480957
+    },
+    {
+      "name": "数据集样本 #9",
+      "success": true,
+      "output": [
+        {
+          "name": "n1fOt8jSIge",
+          "parameters": {
+            "2fjnevR": "top_rated_series_250",
+            "O__0": 10
+          }
+        }
+      ],
+      "time_taken": 1.4867920875549316
+    },
+    {
+      "name": "数据集样本 #10",
+      "success": true,
+      "output": [
+        {
+          "name": "4LuuW",
+          "parameters": {
+            ".S96iBzF": "(([]))"
+          }
+        },
+        {
+          "name": "945hEAZTTK3hSg",
+          "parameters": {
+            "NbGmWiGqxA": 5,
+            "lcB9": true,
+            "VmvBl": false,
+            "HnKe": false,
+            "f1oWhcN6S_": false
+          }
+        },
+        {
+          "name": "uFcwOv",
+          "parameters": {
+            "OzQNfcKga": [
+              4,
+              2,
+              3,
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "time_taken": 2.6511318683624268
+    }
+  ]
+}
