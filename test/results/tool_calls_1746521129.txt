@@ -1,0 +1,5 @@
+
+
+<tool_call>
+{"name": "get_weather", "arguments": {"location": "北京"}}
+</tool_call>

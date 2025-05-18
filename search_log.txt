@@ -1,0 +1,10 @@
+2025-05-12 11:57:12,182 - qwen_search - INFO - 日志将同时输出到文件: search_log.txt
+2025-05-12 11:57:12,182 - qwen_search - INFO - === 启动Qwen2.5搜索增强测试（BrightData版）===
+2025-05-12 11:57:12,182 - qwen_search - INFO - 模型: Qwen2.5-7B-Instruct_ZeroSearch
+2025-05-12 11:57:12,182 - qwen_search - INFO - API URL: http://60.50.228.238:62735/v1
+2025-05-12 11:57:12,182 - qwen_search - INFO - 真实搜索: 启用
+2025-05-12 11:57:12,182 - qwen_search - INFO - BrightData API密钥: 已配置
+2025-05-12 11:57:12,182 - qwen_search - INFO - 最大搜索轮数: 6
+2025-05-12 11:57:12,182 - qwen_search - INFO - 日志级别: DEBUG
+2025-05-12 11:57:12,183 - qwen_search - INFO - 
+===== 第 1 轮 =====

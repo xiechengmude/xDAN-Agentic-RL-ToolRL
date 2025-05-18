@@ -1,0 +1,82 @@
+{
+  "scenario": {
+    "name": "复杂参数工具测试",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是一个有用的AI助手，可以使用工具来帮助用户解决问题。"
+      },
+      {
+        "role": "user",
+        "content": "帮我分析一下这段文本的情感：'这家餐厅的服务态度非常好，但是食物味道一般，价格有点贵。'"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "analyze_sentiment",
+          "description": "分析文本的情感倾向",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "需要分析的文本内容"
+              },
+              "aspects": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "需要分析的方面，例如服务、食物、价格等"
+              },
+              "language": {
+                "type": "string",
+                "description": "文本语言，默认为中文"
+              }
+            },
+            "required": [
+              "text"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+  "response": {
+    "id": "chatcmpl-f2f722b4f01a48208b7414a87adbcff1",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "\n\n<tool_call>\n{\"name\": \"analyze_sentiment\", \"arguments\": {\"text\": \"这家餐厅的服务态度非常好，但是食物味道一般，价格有点贵。\", \"aspects\": [\"服务\", \"食物\", \"价格\"], \"language\": \"中文\"}}\n</tool_call>",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [],
+          "reasoning_content": "\n好的，用户让我分析这段文本的情感：“这家餐厅的服务态度非常好，但是食物味道一般，价格有点贵。”首先，我需要确定用户的需求是什么。他们可能想了解顾客对餐厅不同方面的评价，比如服务、食物和价格。用户可能是个商家，想改进服务，或者是个消费者，想决定是否去这家餐厅。\n\n接下来，我需要使用提供的analyze_sentiment工具。这个工具需要文本内容，可能还需要分析的方面和语言。用户已经给出了文本，但没有指定方面，所以可能需要默认分析所有提到的方面。文本中提到了服务态度、食物味道和价格，所以这三个方面应该被包括进去。语言是中文，所以参数里要设置language为中文。\n\n然后，我需要检查工具的参数。函数需要text，这是必须的，aspects是可选的数组，language默认中文。用户没有特别指定方面，但文本里明确提到了三个点，所以最好将这些方面列出来，这样分析结果会更准确。比如，服务态度对应“服务”，食物味道对应“食物”，价格对应“价格”。这样分方面分析，用户能更清楚每个部分的情感倾向。\n\n可能用户希望得到每个方面的具体情感分析，而不仅仅是整体。所以调用函数时，应该将aspects参数设置为[\"服务\", \"食物\", \"价格\"]。这样返回的结果会分别说明每个方面是正面、负面还是中性。比如服务是正面，食物和价格可能是负面或中性，具体要看分析结果。\n\n最后，确保正确调用函数，参数正确，然后返回结果。用户可能需要这些信息来做决策或改进，所以准确的分析很重要。\n"
+        },
+        "stop_reason": null
+      }
+    ],
+    "created": 1746515792,
+    "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 402,
+      "prompt_tokens": 249,
+      "total_tokens": 651,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null
+  }
+}

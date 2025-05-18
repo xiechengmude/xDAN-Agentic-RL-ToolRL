@@ -1,0 +1,90 @@
+{
+  "scenario": {
+    "name": "多工具选择测试",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是一个有用的AI助手，可以使用工具来帮助用户解决问题。"
+      },
+      {
+        "role": "user",
+        "content": "我想了解一下人工智能的最新进展，并且查询一下微软的股票情况"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_web",
+          "description": "搜索网络获取信息",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "搜索查询词"
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        }
+      },
+      {
+        "type": "function",
+        "function": {
+          "name": "get_stock_info",
+          "description": "获取股票信息",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "股票代码，例如 MSFT 表示微软公司"
+              }
+            },
+            "required": [
+              "symbol"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+  "response": {
+    "id": "chatcmpl-de286f21ff764d68a67f86350be9dac3",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "\n\n<tool_call>\n{\"name\": \"search_web\", \"arguments\": {\"query\": \"人工智能的最新进展\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"get_stock_info\", \"arguments\": {\"symbol\": \"MSFT\"}}\n</tool_call>",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [],
+          "reasoning_content": "\n好的，用户想了解人工智能的最新进展，并且查询微软的股票情况。我需要使用提供的工具来帮助他。\n\n首先，对于人工智能的最新进展，应该使用search_web工具进行搜索。查询词应该是“人工智能的最新进展”或者类似的关键词，这样能获取到最新的信息。\n\n然后，用户还要求查询微软的股票情况，这里需要使用get_stock_info工具。微软的股票代码是MSFT，所以参数里应该传入symbol: \"MSFT\"。\n\n需要确保两个工具都被调用，分别处理这两个不同的请求。先处理搜索部分，再处理股票信息。检查参数是否正确，查询词是否明确，股票代码是否正确。确认无误后，生成对应的tool_call。\n"
+        },
+        "stop_reason": null
+      }
+    ],
+    "created": 1746515951,
+    "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 200,
+      "prompt_tokens": 252,
+      "total_tokens": 452,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null
+  }
+}

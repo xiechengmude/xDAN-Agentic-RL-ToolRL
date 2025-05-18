@@ -1,0 +1,289 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_stock_basic_info",
+      "description": "获取股票基本信息，返回股票的详细资料"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_search_stocks",
+      "description": "搜索股票，根据关键词查找匹配的股票信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_fuzzy_match_stocks",
+      "description": "模糊匹配股票，根据关键词查找相似的股票"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_income_statement",
+      "description": "获取股票的利润表数据，包括营收、利润等财务指标"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_fund_basic",
+      "description": "获取公募基金数据列表，包括场内和场外基金信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_hk_basic",
+      "description": "获取港股列表信息，包括股票代码、名称等基本信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_us_basic",
+      "description": "获取美股列表信息，包括股票代码、名称等基本信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_us_daily",
+      "description": "获取美股行情数据，包括开盘价、收盘价、最高价等"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "tushareMcp_get_hk_daily",
+      "description": "获取港股行情数据，包括开盘价、收盘价、最高价等"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_sse_summary",
+      "description": "获取上海证券交易所市场概览数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_szse_summary",
+      "description": "获取深圳证券交易所市场概览数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_a_share_spot",
+      "description": "获取A股市场所有股票的实时行情数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_a_share_daily",
+      "description": "获取A股个股历史日线数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_a_share_spot_single",
+      "description": "获取特定A股股票的实时行情数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_stock_info",
+      "description": "获取特定股票的详细信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_minute_data",
+      "description": "获取特定A股股票的分钟级数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_historical_minute_data",
+      "description": "获取特定A股股票的历史分钟数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_sector_spot",
+      "description": "获取股票行业板块的实时行情数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_sector_detail",
+      "description": "获取特定行业板块内股票的详细数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_industry_boards",
+      "description": "获取所有股票行业板块列表"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "chinaFinanceMcp_get_concept_boards",
+      "description": "获取所有股票概念板块列表"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_income_statements",
+      "description": "获取公司的利润表数据，包括收入、支出和利润等财务指标"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_balance_sheets",
+      "description": "获取公司的资产负债表数据，包括资产、负债和股东权益等财务指标"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_cash_flow_statements",
+      "description": "获取公司的现金流量表数据，包括经营、投资和融资活动的现金流"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_current_stock_price",
+      "description": "获取公司股票的当前/最新价格"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_historical_stock_prices",
+      "description": "获取公司股票的历史价格数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_company_news",
+      "description": "获取公司的相关新闻"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_available_crypto_tickers",
+      "description": "获取所有可用的加密货币代码列表"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_historical_crypto_prices",
+      "description": "获取加密货币的历史价格数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "financialDatasetsMcp_get_current_crypto_price",
+      "description": "获取加密货币的当前/最新价格"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_historical_stock_prices",
+      "description": "获取股票的历史价格数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_stock_info",
+      "description": "获取股票的基本信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_yahoo_finance_news",
+      "description": "获取股票的相关新闻"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_stock_actions",
+      "description": "获取股票的分红和拆股信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_financial_statement",
+      "description": "获取股票的财务报表"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_holder_info",
+      "description": "获取股票的持有者信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_option_expiration_dates",
+      "description": "获取股票的期权到期日列表"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_option_chain",
+      "description": "获取股票的期权链数据"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "yahooFinanceMcp_get_recommendations",
+      "description": "获取股票的分析师推荐或升降级信息"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "miraSearchMcp_search_input",
+      "description": "执行搜索请求并返回结果"
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "miraSearchMcp_search_input_stream",
+      "description": "处理搜索请求，返回一个生成器函数用于透传SSE流式响应"
+    }
+  }
+]

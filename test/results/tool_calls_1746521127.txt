@@ -1,0 +1,5 @@
+
+
+<tool_call>
+{"name": "get_stock_info", "arguments": {"symbol": "AAPL"}}
+</tool_call>

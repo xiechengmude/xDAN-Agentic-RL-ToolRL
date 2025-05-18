@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义样式和颜色 -->
+  <defs>
+    <style>
+      .bg-main { fill: #f5f5f7; }
+      .bg-panel { fill: #ffffff; }
+      .border { fill: none; stroke: #e0e0e0; stroke-width: 1; }
+      .border-blue { fill: none; stroke: #0078D7; stroke-width: 2; }
+      .title { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: bold; fill: #1A365D; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #505050; }
+      .label { font-family: 'Arial', sans-serif; font-size: 12px; fill: #505050; }
+      .menu-item { font-family: 'Arial', sans-serif; font-size: 13px; fill: #1A365D; }
+      .data-value { font-family: 'Consolas', monospace; font-size: 14px; font-weight: bold; fill: #1A365D; }
+      .green-text { fill: #107C10; }
+      .red-text { fill: #E81123; }
+      .amber-text { fill: #FFC83D; }
+      .btn-primary { fill: #0078D7; }
+      .btn-text { font-family: 'Arial', sans-serif; font-size: 12px; fill: #ffffff; text-anchor: middle; dominant-baseline: middle; }
+      .user-message { font-family: 'Arial', sans-serif; font-size: 13px; fill: #505050; }
+      .agent-message { font-family: 'Arial', sans-serif; font-size: 13px; fill: #1A365D; }
+      .icon-fill { fill: #0078D7; }
+      .chart-bar { fill: #0078D7; opacity: 0.8; }
+      .chart-line { fill: none; stroke: #1A365D; stroke-width: 2; }
+      .chart-area { fill: #0078D7; opacity: 0.1; }
+    </style>
+    
+    <!-- 图标定义 -->
+    <symbol id="icon-home" viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" class="icon-fill"/>
+    </symbol>
+    <symbol id="icon-portfolio" viewBox="0 0 24 24">
+      <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" class="icon-fill"/>
+    </symbol>
+    <symbol id="icon-market" viewBox="0 0 24 24">
+      <path d="M3 3v18h18V3H3zm9 14H7v-5h5v5zm0-7H7V7h5v3zm5 7h-3v-5h3v5zm0-7h-3V7h3v3z" class="icon-fill"/>
+    </symbol>
+    <symbol id="icon-learn" viewBox="0 0 24 24">
+      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" class="icon-fill"/>
+    </symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24">
+      <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" class="icon-fill"/>
+    </symbol>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="800" class="bg-main" />
+  
+  <!-- 状态栏 -->
+  <rect x="20" y="20" width="1160" height="40" rx="6" class="bg-panel border" />
+  <text x="40" y="45" class="title">xDAN Hermes Agent</text>
+  <text x="1060" y="45" class="label">张先生 | 高级账户 | 最后更新: 2023-06-14 14:30</text>
+  
+  <!-- 主要内容区域 -->
+  <rect x="20" y="80" width="250" height="640" rx="6" class="bg-panel border" /> <!-- 左侧导航 -->
+  <rect x="290" y="80" width="580" height="640" rx="6" class="bg-panel border" /> <!-- 主交互区域 -->
+  <rect x="890" y="80" width="290" height="640" rx="6" class="bg-panel border" /> <!-- 右侧情境面板 -->
+  
+  <!-- 底部区域 -->
+  <rect x="20" y="740" width="1160" height="40" rx="6" class="bg-panel border" />
+  <text x="40" y="765" class="label">实时市场状态: 正常 | 上证指数: 3,273.15 (+0.45%) | 恒生指数: 18,096.45 (+1.12%) | 道琼斯: 34,152.60 (-0.12%)</text>
+  
+  <!-- 左侧导航内容 -->
+  <text x="40" y="110" class="title">导航</text>
+  <line x1="40" y1="120" x2="250" y2="120" class="border" />
+  
+  <!-- 导航菜单项 -->
+  <g transform="translate(40, 150)">
+    <use href="#icon-home" width="20" height="20" />
+    <text x="35" y="15" class="menu-item">首页</text>
+  </g>
+  
+  <g transform="translate(40, 190)">
+    <use href="#icon-portfolio" width="20" height="20" />
+    <text x="35" y="15" class="menu-item">投资组合</text>
+    <rect x="-10" y="-15" width="200" height="30" rx="4" fill="#0078D7" opacity="0.1" />
+  </g>
+  
+  <g transform="translate(40, 230)">
+    <use href="#icon-market" width="20" height="20" />
+    <text x="35" y="15" class="menu-item">市场分析</text>
+  </g>
+  
+  <g transform="translate(40, 270)">
+    <use href="#icon-learn" width="20" height="20" />
+    <text x="35" y="15" class="menu-item">学习中心</text>
+  </g>
+  
+  <g transform="translate(40, 310)">
+    <use href="#icon-settings" width="20" height="20" />
+    <text x="35" y="15" class="menu-item">设置</text>
+  </g>
+  
+  <!-- 工具面板 -->
+  <text x="40" y="380" class="title">我的工具</text>
+  <line x1="40" y1="390" x2="250" y2="390" class="border" />
+  
+  <rect x="40" y="410" width="210" height="30" rx="4" class="bg-main" />
+  <text x="55" y="430" class="menu-item">投资组合分析器</text>
+  
+  <rect x="40" y="450" width="210" height="30" rx="4" class="bg-main" />
+  <text x="55" y="470" class="menu-item">税务优化计算器</text>
+  
+  <rect x="40" y="490" width="210" height="30" rx="4" class="bg-main" />
+  <text x="55" y="510" class="menu-item">退休规划模拟器</text>
+  
+  <rect x="40" y="530" width="210" height="30" rx="4" class="bg-main" />
+  <text x="55" y="550" class="menu-item">风险评估工具</text>
+  
+  <!-- 主交互区域内容 - 对话界面 -->
+  <text x="320" y="110" class="title">投资组合分析</text>
+  <line x1="320" y1="120" x2="850" y2="120" class="border" />
+  
+  <!-- 用户消息 -->
+  <g transform="translate(320, 150)">
+    <rect width="500" height="60" rx="6" class="bg-main" />
+    <text x="20" y="20" class="subtitle">用户:</text>
+    <text x="20" y="40" class="user-message">我的投资组合是否平衡？我担心科技股比例过高。</text>
+  </g>
+  
+  <!-- 智能体回应 -->
+  <g transform="translate(320, 230)">
+    <rect width="520" height="380" rx="6" fill="#F0F7FF" stroke="#0078D7" stroke-width="1" />
+    <text x="20" y="30" class="subtitle">xDAN Hermes Agent:</text>
+    
+    <!-- 智能体回应内容 -->
+    <g transform="translate(20, 50)">
+      <text class="agent-message">分析了您的投资组合，确实发现科技股比例达到了42%，明显高于建议的25%上限。</text>
+      <text y="25" class="agent-message">这增加了您的投资组合集中度风险。</text>
+    </g>
+    
+    <!-- 折叠面板 - 推理过程 -->
+    <g transform="translate(20, 100)">
+      <rect width="480" height="30" rx="4" fill="#0078D7" opacity="0.1" />
+      <text x="10" y="20" class="subtitle">推理过程:</text>
+      <text x="470" y="20" class="subtitle">▼</text>
+      
+      <rect y="35" width="480" height="80" rx="4" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1" />
+      <text x="10" y="55" class="label">1. 获取您的完整投资组合数据</text>
+      <text x="10" y="75" class="label">2. 计算各行业占比：科技(42%), 金融(15%), 医疗(10%), 消费(18%), 其他(15%)</text>
+      <text x="10" y="95" class="label">3. 对比最佳实践标准：单一行业不应超过25%</text>
+      <text x="10" y="115" class="label">4. 评估风险：集中度风险高，波动性相关性风险增加</text>
+    </g>
+    
+    <!-- 图表 - 资产配置 -->
+    <g transform="translate(20, 200)">
+      <text class="subtitle">当前资产配置:</text>
+      
+      <!-- 条形图 -->
+      <g transform="translate(0, 20)">
+        <rect y="0" width="210" height="25" rx="2" fill="#0078D7" opacity="0.8" />
+        <rect y="30" width="75" height="25" rx="2" fill="#0078D7" opacity="0.8" />
+        <rect y="60" width="50" height="25" rx="2" fill="#0078D7" opacity="0.8" />
+        <rect y="90" width="90" height="25" rx="2" fill="#0078D7" opacity="0.8" />
+        <rect y="120" width="75" height="25" rx="2" fill="#0078D7" opacity="0.8" />
+        
+        <text x="215" y="18" class="data-value">科技 42%</text>
+        <text x="80" y="48" class="data-value">金融 15%</text>
+        <text x="55" y="78" class="data-value">医疗 10%</text>
+        <text x="95" y="108" class="data-value">消费 18%</text>
+        <text x="80" y="138" class="data-value">其他 15%</text>
+      </g>
+    </g>
+    
+    <!-- 建议按钮 -->
+    <g transform="translate(310, 340)">
+      <rect width="180" height="35" rx="4" class="btn-primary" />
+      <text x="90" y="18" class="btn-text">查看平衡建议</text>
+    </g>
+  </g>
+  
+  <!-- 输入框 -->
+  <rect x="320" y="660" width="520" height="40" rx="20" class="bg-main border" />
+  <text x="345" y="685" class="label">输入您的问题或指令...</text>
+  
+  <!-- 右侧情境面板内容 -->
+  <text x="910" y="110" class="title">情境概览</text>
+  <line x1="910" y1="120" x2="1160" y2="120" class="border" />
+  
+  <!-- 投资组合概览 -->
+  <text x="910" y="150" class="subtitle">投资组合健康度</text>
+  <rect x="910" y="160" width="250" height="4" rx="2" fill="#E0E0E0" />
+  <rect x="910" y="160" width="170" height="4" rx="2" fill="#FFC83D" />
+  <text x="910" y="180" class="data-value" fill="#FFC83D">68/100</text>
+  <text x="970" y="180" class="label">(需要关注)</text>
+  
+  <!-- 资产分布 -->
+  <text x="910" y="210" class="subtitle">资产分布</text>
+  <rect x="910" y="225" width="250" height="100" rx="4" class="border" />
+  
+  <!-- 简化的饼图 -->
+  <circle cx="960" cy="275" r="40" fill="none" stroke="#E0E0E0" stroke-width="1" />
+  <path d="M960,275 L960,235 A40,40 0 0,1 994.3,295.0 z" fill="#0078D7" opacity="0.8" />
+  <path d="M960,275 L994.3,295.0 A40,40 0 0,1 925.7,295.0 z" fill="#107C10" opacity="0.8" />
+  <path d="M960,275 L925.7,295.0 A40,40 0 0,1 960,235 z" fill="#FFC83D" opacity="0.8" />
+  
+  <text x="1020" y="250" class="label">股票: 62%</text>
+  <text x="1020" y="270" class="label">债券: 23%</text>
+  <text x="1020" y="290" class="label">现金: 15%</text>
+  
+  <!-- 市场指标 -->
+  <text x="910" y="350" class="subtitle">重点市场指标</text>
+  <line x1="910" y1="365" x2="1160" y2="365" class="border" />
+  
+  <g transform="translate(910, 380)">
+    <text class="label">波动性指数 (VIX)</text>
+    <text x="250" y="0" class="data-value red-text" text-anchor="end">28.5</text>
+  </g>
+  
+  <g transform="translate(910, 405)">
+    <text class="label">10年期国债收益率</text>
+    <text x="250" y="0" class="data-value" text-anchor="end">3.65%</text>
+  </g>
+  
+  <g transform="translate(910, 430)">
+    <text class="label">美元指数</text>
+    <text x="250" y="0" class="data-value green-text" text-anchor="end">102.35</text>
+  </g>
+  
+  <!-- 风险提醒 -->
+  <text x="910" y="480" class="subtitle">风险提醒</text>
+  <line x1="910" y1="495" x2="1160" y2="495" class="border" />
+  
+  <g transform="translate(910, 515)">
+    <rect width="250" height="60" rx="4" fill="#FFF8E1" stroke="#FFC83D" stroke-width="1" />
+    <text x="15" y="25" class="subtitle" fill="#664D03">投资组合集中度风险</text>
+    <text x="15" y="45" class="label" fill="#664D03">科技股占比42%，超出建议上限</text>
+  </g>
+  
+  <g transform="translate(910, 590)">
+    <rect width="250" height="60" rx="4" fill="#F8D7DA" stroke="#E81123" stroke-width="1" />
+    <text x="15" y="25" class="subtitle" fill="#58151C">市场波动性增加</text>
+    <text x="15" y="45" class="label" fill="#58151C">VIX指数上升15%，建议关注</text>
+  </g>
+  
+  <!-- 预测曲线 -->
+  <text x="910" y="670" class="subtitle">未来30天市场预测</text>
+  
+  <!-- 简化的市场趋势线 -->
+  <g transform="translate(910, 685)">
+    <rect width="250" height="100" rx="4" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1" />
+    
+    <!-- 网格线 -->
+    <line x1="0" y1="25" x2="250" y2="25" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    <line x1="0" y1="50" x2="250" y2="50" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    <line x1="0" y1="75" x2="250" y2="75" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    
+    <line x1="50" y1="0" x2="50" y2="100" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    <line x1="150" y1="0" x2="150" y2="100" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    <line x1="200" y1="0" x2="200" y2="100" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="2,2" />
+    
+    <!-- 趋势线 -->
+    <path d="M10,55 C40,65 70,40 100,45 C130,50 160,30 190,25 C220,20 240,50 240,50" class="chart-line" />
+    
+    <!-- 区域填充 -->
+    <path d="M10,55 C40,65 70,40 100,45 C130,50 160,30 190,25 C220,20 240,50 240,50 L240,100 L10,100 Z" class="chart-area" />
+    
+    <!-- 当前位置指示器 -->
+    <circle cx="10" cy="55" r="4" fill="#0078D7" />
+  </g>
+</svg> 

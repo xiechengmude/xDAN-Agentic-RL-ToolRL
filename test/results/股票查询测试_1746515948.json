@@ -1,0 +1,71 @@
+{
+  "scenario": {
+    "name": "股票查询测试",
+    "messages": [
+      {
+        "role": "system",
+        "content": "你是一个有用的AI助手，可以使用工具来帮助用户解决问题。"
+      },
+      {
+        "role": "user",
+        "content": "查询苹果公司的股票信息"
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "get_stock_info",
+          "description": "获取股票信息",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "symbol": {
+                "type": "string",
+                "description": "股票代码，例如 AAPL 表示苹果公司"
+              }
+            },
+            "required": [
+              "symbol"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+  "response": {
+    "id": "chatcmpl-ba164a7821314f88aa598a97f935042e",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "\n\n<tool_call>\n{\"name\": \"get_stock_info\", \"arguments\": {\"symbol\": \"AAPL\"}}\n</tool_call>",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [],
+          "reasoning_content": "\n好的，用户想要查询苹果公司的股票信息。我需要调用提供的工具函数get_stock_info。首先，确定股票代码，苹果公司的代码是AAPL。然后，按照函数要求构造参数，参数名是symbol，值为\"AAPL\"。检查是否需要其他参数，但根据工具描述，只需要symbol。确保参数类型正确，是字符串类型。最后，生成正确的JSON调用格式。\n"
+        },
+        "stop_reason": null
+      }
+    ],
+    "created": 1746515946,
+    "model": "xDAN-R1-Thinking-ToolRL-step60-0506",
+    "object": "chat.completion",
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 112,
+      "prompt_tokens": 180,
+      "total_tokens": 292,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null
+  }
+}
