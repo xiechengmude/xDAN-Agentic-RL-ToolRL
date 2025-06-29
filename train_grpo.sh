@@ -14,7 +14,14 @@ export MAX1STEP30MAX3=0
 export SCHEDULEREWARD=0
 export SCHEDULELENGTH=0
 
+#export CUDA_HOME=$CONDA_PREFIX
+export RAY_DEDUP_LOGS=0
+export PYTHONUNBUFFERED=1
+export NCCL_SOCKET_IFNAME=ibs13
+export GLOO_SOCKET_IFNAME=ibs13
+
 export DATA_DIR="./dataset/rlla_4k"
+#export DATA_DIR="./dataset/Eurus-2-RL-Data"
 #export BASE_MODEL="/data/vayu/train/models/xDAN-R2-Thinking-0401"
 #export BASE_MODEL="/data/vayu/train/models/xDAN-L1-Qwen25-7B-Instruct"
 export BASE_MODEL="/data/vayu/train/models/xDAN-L2-Qwen3-14b-Instruct" # e.g., "Qwen2.5-3b-Instruct"

@@ -29,7 +29,7 @@ def call_llm_as_a_judge(prompt):
     client = OpenAI(
         # defaults to os.environ.get("OPENAI_API_KEY")
         api_key="EMPTY",
-        base_url="http://14.103.133.112:8002/v1",
+        base_url="http://10.110.10.3:8000/v1",
     )
 
     models = client.models.list()
@@ -119,12 +119,12 @@ def compute_response_score(solution_str, ground_truth, tokenizer, reward_type, v
         gt = preprocess_text(gt)
 
         try:
-            if reward_type == "response":
+            if reward_type == "embedding":
                 from infinity_client import Client
                 from infinity_client.api.default import embeddings
                 from infinity_client.models import OpenAIEmbeddingInputText, OpenAIEmbeddingResult
 
-                with Client(base_url="http://14.103.133.112:8001") as client:
+                with Client(base_url="http://10.110.10.3:3000") as client:
                     embeds: OpenAIEmbeddingResult = embeddings.sync(
                         client=client,
                         body=OpenAIEmbeddingInputText.from_dict(
@@ -446,6 +446,7 @@ def compute_score(solution_str, ground_truth, extra_info, tokenizer, step=0):
     completions = [[{"role": "assistant", "content": predict_str}]]
     answer = [ground_truth]
 
+    print(extra_info)
     format_score = customize_format_reward_func(completions, answer, step, format_max_possible, format_min_possible, extra_info["type"])[0]
     correctness_score = customize_correctness_reward_tool(completions, answer, step, tool_max_possible, tool_min_possible, tokenizer, extra_info["type"])[0]
 
