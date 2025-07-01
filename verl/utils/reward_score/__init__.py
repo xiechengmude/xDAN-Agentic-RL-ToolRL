@@ -103,7 +103,7 @@ def default_compute_score(data_source, solution_str, ground_truth, step=0, token
     elif isinstance(res, (int, float, bool)):
         return float(res)
     else:
-        return float(res[0])
+        return {"score": float(res[0]), "format_score": 0.0, "correctness_score": float(res[0]), "length_score": 0.0}
 
 
 @deprecated("verl.utils.reward_score.default_compute_score")
