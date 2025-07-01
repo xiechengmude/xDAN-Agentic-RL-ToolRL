@@ -230,13 +230,14 @@ def customize_format_reward_func(completions, answer, step, max_possible_reward,
         print(f"*** Response {idx + 1}***\n{response}")
 
     for response in responses:
+        response = response.strip()
         reward = min_possible_reward
         if reward_type == "tool_use":
-            pattern = r"^<think>.*?</think>\n<tool_call>\n.*?\n</tool_call>$"
+            pattern = r"^<think>.*?</think>\n*<tool_call>.*?</tool_call>$"
             if re.search(pattern, response, re.DOTALL) and response.count("<tool_call>") == 1 and response.count("</tool_call>") == 1:
                 reward = max_possible_reward
         else:
-            pattern = r"^<think>.*?</think>\n<response>.*?</response>$"
+            pattern = r"^<think>.*?</think>\n*<response>.*?</response>$"
             if re.search(pattern, response, re.DOTALL) and response.count("<response>") == 1 and response.count("</response>") == 1:
                 reward = max_possible_reward
 
