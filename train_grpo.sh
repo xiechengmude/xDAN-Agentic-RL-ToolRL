@@ -23,7 +23,7 @@ export GLOO_SOCKET_IFNAME=ibs13
 export DATA_DIR="./dataset/rlla_4k"
 #export DATA_DIR="./dataset/Eurus-2-RL-Data"
 #export BASE_MODEL="/data/vayu/train/models/xDAN-R2-Thinking-0401"
-#export BASE_MODEL="/data/vayu/train/models/xDAN-L1-Qwen25-7B-Instruct"
+#export BASE_MODEL="/data/vayu/train/models/Qwen2.5-14B-Instruct"
 export BASE_MODEL="/data/vayu/train/models/xDAN-L2-Qwen3-14b-Instruct" # e.g., "Qwen2.5-3b-Instruct"
 export EXPERIMENT_NAME="qwen-xdan-l2-qwen3-14b-reasoning" # e.g., "grpo-qwen2.5-3b"
 bash ./examples/grpo_trainer/run_grpo.sh
