@@ -44,6 +44,32 @@ def default_compute_score(
         from . import gsm8k
 
         res = gsm8k.compute_score(solution_str, ground_truth)
+    elif (
+        data_source
+        in [
+            "BigMathVerified",
+            "NuminaMath",
+            "am_synthetic",
+            "openR1Math_extended",
+            "MetaMathQA",
+            "data_ablation_full59K",
+            "IMO_1959-2024",
+            "aime",
+            "numina_aops_forum",
+            "numina_synthetic_math",
+            "numina_amc_aime",
+            "numina_synthetic_amc",
+            "numina_cn_k12",
+            "numina_olympiads",
+        ]
+        or data_source is None
+        or data_source.endswith("amc_aime_website")
+        or data_source.startswith("IMO_")
+        or data_source.endswith("latex_artofproblem")
+    ):
+        from . import prime_math
+
+        res = prime_math.compute_score(solution_str, ground_truth)
     elif data_source in ["lighteval/MATH", "DigitalLearningGmbH/MATH-lighteval"]:
         from . import math
 
@@ -60,17 +86,20 @@ def default_compute_score(
 
         res = math_dapo.compute_score(solution_str, ground_truth)
     elif data_source in [
-        "numina_aops_forum",
-        "numina_synthetic_math",
-        "numina_amc_aime",
-        "numina_synthetic_amc",
-        "numina_cn_k12",
-        "numina_olympiads",
+        "codecontests",
+        "apps",
+        "codeforces",
+        "taco",
+        "verifiable_coding_problems_python",
+        "KodCode",
+        "codeforces_cots",
+        "PRIME",
+        "ACECode",
+        "opencoder",
+        "DeepCoder",
+        "liveincode_generation",
+        "OpenThoughts-114k-Code_decontaminated",
     ]:
-        from . import prime_math
-
-        res = prime_math.compute_score(solution_str, ground_truth)
-    elif data_source in ["codecontests", "apps", "codeforces", "taco"]:
         # Use the passed sandbox_fusion_url if available
         if sandbox_fusion_url:
             from . import sandbox_fusion
