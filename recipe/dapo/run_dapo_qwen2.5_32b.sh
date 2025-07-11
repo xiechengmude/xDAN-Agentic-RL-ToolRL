@@ -124,7 +124,7 @@ python3 -m recipe.dapo.main_dapo \
     trainer.project_name="${project_name}" \
     trainer.experiment_name="${exp_name}" \
     trainer.n_gpus_per_node=8 \
-    trainer.nnodes="${NNODES}" \
+    trainer.nnodes=4 \
     trainer.val_before_train=True \
     trainer.test_freq=-1 \
     trainer.save_freq=20 \
