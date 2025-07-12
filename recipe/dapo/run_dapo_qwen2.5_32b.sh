@@ -58,9 +58,6 @@ python3 -m recipe.dapo.main_dapo \
     actor_rollout_ref.actor.strategy=fsdp2 \
     critic.strategy=fsdp2 \
     reward_model.strategy=fsdp2 \
-    reward_model.sandbox_fusion.url='http://10.110.10.4:8080/run_code' \
-    reward_model.sandbox_fusion.max_concurrent=128 \
-    reward_model.reward_manager=prime \
     data.train_files="${TRAIN_FILE}" \
     data.val_files="${TEST_FILE}" \
     data.prompt_key=prompt \
@@ -117,6 +114,8 @@ python3 -m recipe.dapo.main_dapo \
     actor_rollout_ref.ref.ulysses_sequence_parallel_size=${sp_size} \
     actor_rollout_ref.actor.fsdp_config.fsdp_size=-1 \
     reward_model.reward_manager=dapo \
+    reward_model.sandbox_fusion.url='http://10.110.10.4:8080/run_code' \
+    reward_model.sandbox_fusion.max_concurrent=128 \
     reward_model.overlong_buffer.enable=${enable_overlong_buffer} \
     reward_model.overlong_buffer.len=${overlong_buffer_len} \
     reward_model.overlong_buffer.penalty_factor=${overlong_penalty_factor} \
