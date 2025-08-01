@@ -8,7 +8,11 @@ echo "Starting all generations at $(date)"
 # Function to run generation for a specific STEP
 run_generation() {
     local STEP=$1
-    local MODEL_PATH=/data/vayu/train/models/xDAN-Qwen3-Code-Math-Step-$STEP
+    if [ "$STEP" -eq 0 ]; then
+        local MODEL_PATH=/data/vayu/train/models/xDAN-L2-Qwen3-32b-Instruct
+    else
+        local MODEL_PATH=/data/vayu/train/models/xDAN-Qwen3-Code-Math-Step-$STEP
+    fi
     echo "Starting generation for STEP=$STEP at $(date)" >> generation_step_${STEP}.log
     python3 -m verl.trainer.main_generation \
         trainer.nnodes=1 \
